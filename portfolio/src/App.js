@@ -1,15 +1,23 @@
 import './App.css';
-import Avatar from './Images/Avatar.jpg';
+import {ReactComponent as LinkedinSVG} from './SVGs/Linkedin.svg';
+import {ReactComponent as GithubSVG} from './SVGs/Github.svg';
+import {ReactComponent as TwitterSVG} from './SVGs/Twitter.svg';
+import About from './Components/About';
 
 function App() {
   return (
     <div className='App'>
-      <div className='avatarBorder'>
-        <img src={Avatar} height={350} className='avatar'/>
-      </div>
-      <div className='introText'>
-        <h2>Hey! I'm</h2>
-        <h1>Farah</h1>
+      <About />
+      <div className='socials'>
+        <a href='https://www.linkedin.com/in/farah-ahmad-4b899626a/' target='_blank'>
+          <LinkedinSVG />
+        </a>
+        <a href='https://github.com/Farah065' target='_blank'>
+          <GithubSVG />
+        </a>
+        <a href='https://twitter.com/pixlfar' target='_blank'>
+          <TwitterSVG />
+        </a>
       </div>
     </div>
   );

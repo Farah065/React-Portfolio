@@ -17,7 +17,7 @@
 
 .App {
   background: linear-gradient(to right, #2A2A2C 0%, #2A2A2C 65%, #708188 65%, #708188 100%);
-  height: 100vh;
+  height: 200vh;
   width: 100%;
 }
 
@@ -33,6 +33,10 @@
   transform: translate(-50%, -50%);
 }
 
+.avatarBorder img {
+  width: 23vw;
+}
+
 .avatar {
   position: relative;
   display: block;
@@ -40,13 +44,14 @@
 
 h1 {
   font-family: 'Source Serif Pro', serif;
-  font-size: 92px;
+  font-size: max(6vw, 58px);
   margin-top: -10px;
 }
 
 h2 {
   font-family: 'Mulish', sans-serif;
   font-weight: 500;
+  font-size: max(1.5vw, 20px);
 }
 
 .introText {
@@ -54,6 +59,20 @@ h2 {
   flex-direction: column;
   justify-content: center;
   height: 100vh;
-  padding-left: 20%;
+  padding-left: 20vw;
   width: max-content
+}
+
+.socials {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+}
+
+.socials > a{
+  width: 50px;
+  height: 50px;
 }
