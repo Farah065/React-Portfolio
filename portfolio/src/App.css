@@ -15,25 +15,29 @@
   src: url(./Fonts/Mulish-VariableFont_wght.ttf);
 }
 
-.App {
-  background: linear-gradient(to right, #2A2A2C 0%, #2A2A2C 65%, #708188 65%, #708188 100%);
-  height: 200vh;
+.app {
+  background: linear-gradient(to right, #2A2A2C 0%, #2A2A2C 70%, #708188 70%, #708188 100%);
+  height: max-content;
   width: 100%;
 }
 
-.avatarBorder {
+#projects, #about, #contact {
+  position: relative;
+}
+
+.avatar-border {
   border-image: linear-gradient(to right, #708188 0%, #708188 50%, #2A2A2C 50%, #2A2A2C 100%);
   border-style: solid;
   border-width: 4px;
   border-image-slice: 1;
   position: absolute;
   padding: 10px;
-  left: calc(65% - 0.25px);
+  left: calc(70% - 0.25px);
   top: 50%;
   transform: translate(-50%, -50%);
 }
 
-.avatarBorder img {
+.avatar-border img {
   width: 23vw;
 }
 
@@ -44,22 +48,22 @@
 
 h1 {
   font-family: 'Source Serif Pro', serif;
-  font-size: max(6vw, 58px);
+  font-size: max(7vw, 58px);
   margin-top: -10px;
 }
 
 h2 {
   font-family: 'Mulish', sans-serif;
   font-weight: 500;
-  font-size: max(1.5vw, 20px);
+  font-size: max(2vw, 20px);
 }
 
-.introText {
+.intro-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100vh;
-  padding-left: 20vw;
+  margin-left: 20vw;
   width: max-content
 }
 
@@ -72,7 +76,45 @@ h2 {
   right: 16px;
 }
 
-.socials > a{
-  width: 50px;
-  height: 50px;
+.socials > a {
+  width: 40px;
+  height: 40px;
+}
+
+.navbar {
+  position: fixed;
+  top: 24px;
+  z-index: 2;
+  margin-left: 16px;
+}
+
+/* .nav-hidden {
+  background-color: black;
+} */
+
+.nav-item {
+  font-family: 'Mulish', sans-serif;
+  font-size: 20px;
+  display: inline;
+  position: relative;
+  margin: 16px;
+  cursor: pointer;
+}
+
+.nav-item:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: -5px;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #EDEFEE;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.nav-item:hover:after { 
+  width: 105%; 
+  left: -2.5%; 
 }
