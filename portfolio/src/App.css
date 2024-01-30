@@ -25,6 +25,10 @@
   position: relative;
 }
 
+#projects {
+  height: 100vh;
+}
+
 .avatar-border {
   border-image: linear-gradient(to right, #708188 0%, #708188 50%, #2A2A2C 50%, #2A2A2C 100%);
   border-style: solid;
@@ -48,14 +52,29 @@
 
 h1 {
   font-family: 'Source Serif Pro', serif;
-  font-size: max(7vw, 58px);
+  font-size: 7vw;
   margin-top: -10px;
+  animation: h1-load 400ms ease-out 1s;
+  animation-fill-mode: forwards;
+  transform: translateY(40px);
 }
 
 h2 {
   font-family: 'Mulish', sans-serif;
   font-weight: 500;
-  font-size: max(2vw, 20px);
+  font-size: 2vw;
+  animation: h2-load 400ms ease-out 1s;
+  animation-fill-mode: forwards;
+  transform: translateY(40px);
+}
+
+p {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 500;
+  font-size: 1.75vw;
+  opacity: 0;
+  animation: p-load 500ms ease-out 2s;
+  animation-fill-mode: forwards;
 }
 
 .intro-text {
@@ -65,6 +84,11 @@ h2 {
   height: 100vh;
   margin-left: 20vw;
   width: max-content
+}
+
+.highlight {
+  display: inline;
+  color: #A4D5E9;
 }
 
 .socials {
@@ -82,10 +106,16 @@ h2 {
 }
 
 .navbar {
-  position: fixed;
-  top: 24px;
-  z-index: 2;
+  margin-top: 24px;
+  margin-bottom: 24px;
   margin-left: 16px;
+}
+
+.navbar-container {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  background: linear-gradient(to right, #2A2A2C 0%, #2A2A2C 70%, #708188 70%, #708188 100%)
 }
 
 /* .nav-hidden {
@@ -117,4 +147,77 @@ h2 {
 .nav-item:hover:after { 
   width: 105%; 
   left: -2.5%; 
+}
+
+.card {
+  background-color: #D9D9D9;
+  width: 27vw;
+  height: 14vw;
+}
+
+.card-outline {
+  padding-right: 1.04vw;
+  padding-bottom: 1.04vw;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-width: 4px;
+  width: 27vw;
+  position: relative;
+}
+
+.card-container {
+  padding: 2.08vw 1.04vw 1.04vw 2.08vw;
+}
+
+.col-1 {
+  border-color: #708188;
+}
+
+.col-2 {
+  border-image: linear-gradient(to right, #708188 0%, #708188 63.05%, #2A2A2C 63.05%, #2A2A2C 100%);
+  border-image-slice: 1;
+}
+
+.card-group {
+  display: flex;
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes p-load {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes h1-load {
+  0% {
+    font-size: 7vw;
+    transform: translateY(40px);
+  }
+
+  100% {
+    font-size: 5vw;
+    transform: translateY(0);
+  }
+}
+
+@keyframes h2-load {
+  0% {
+    font-size: 2vw;
+    transform: translateY(40px);
+  }
+
+  100% {
+    font-size: 1.5vw;
+    transform: translateY(0);
+  }
 }

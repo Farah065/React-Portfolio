@@ -36,23 +36,25 @@ function App() {
 
   return (
     <div className='app'>
-      <ul className='navbar'>
-        <li className='nav-item'>
-          <Link to="about" spy={true} smooth={true} duration={500}>
-            About
-          </Link>
-        </li>
-        <li className='nav-item'>
-          <Link to="projects" spy={true} smooth={true} duration={500}>
-            Projects
-          </Link>
-        </li>
-        <li className='nav-item'>
-          <Link to="contact" spy={true} smooth={true} duration={500}>
-            Contact
-          </Link>
-        </li>
-      </ul>
+      <div className='navbar-container'>
+        <ul className='navbar'>
+          <li className='nav-item'>
+            <Link to="about" spy={true} smooth={true} duration={500}>
+              About
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link to="projects" spy={true} smooth={true} duration={500}>
+              Projects
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link to="contact" spy={true} smooth={true} duration={500}>
+              Contact
+            </Link>
+          </li>
+        </ul>
+      </div>
 
       <About />
       <Projects />
