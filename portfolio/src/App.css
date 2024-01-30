@@ -52,6 +52,14 @@
 
 h1 {
   font-family: 'Source Serif Pro', serif;
+}
+
+h2, p {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 500;
+}
+
+.intro-text h1 {
   font-size: 7vw;
   margin-top: -10px;
   animation: h1-load 400ms ease-out 1s;
@@ -59,18 +67,14 @@ h1 {
   transform: translateY(40px);
 }
 
-h2 {
-  font-family: 'Mulish', sans-serif;
-  font-weight: 500;
+.intro-text h2 {
   font-size: 2vw;
   animation: h2-load 400ms ease-out 1s;
   animation-fill-mode: forwards;
   transform: translateY(40px);
 }
 
-p {
-  font-family: 'Mulish', sans-serif;
-  font-weight: 500;
+.intro-text p {
   font-size: 1.75vw;
   opacity: 0;
   animation: p-load 500ms ease-out 2s;
@@ -153,6 +157,8 @@ p {
   background-color: #D9D9D9;
   width: 27vw;
   height: 14vw;
+  position: relative;
+  display: flex;
 }
 
 .card-outline {
@@ -184,6 +190,29 @@ p {
   top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.card-img{
+  height: 100%;
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px;
+}
+
+.card-text h1 {
+  color: #2A2A2C;
+  font-size: 1.8vw;
+  line-height: 28px;
+}
+
+.card-text p {
+  color: #2A2A2C;
+  font-size: 1vw;
+  padding-top: 12px;
 }
 
 @keyframes p-load {
