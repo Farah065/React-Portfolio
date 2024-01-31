@@ -165,6 +165,12 @@ h2, p {
   border-right-style: solid;
   border-bottom-style: solid;
   border-width: 0.32vw;
+  transition: ease-out 200ms;
+}
+
+.card-outline:hover {
+  padding: 0.52vw;
+  transition: ease-out 200ms;
 }
 
 .card-container {
@@ -278,18 +284,21 @@ label {
   font-weight: 500;
   color: #2A2A2C;
   font-size: 1.6vw;
-  margin-bottom: 6px;
+  margin-bottom: 0.5vw;
 }
 
 input {
   height: 2.2vw;
+}
+
+.input {
   color: #2A2A2C;
   background-color: #EDEFEE;
   padding-left: 0.7vw;
   border: none;
   font-family: 'Mulish', sans-serif;
   font-size: 1.1vw;
-  margin-bottom: 1.2vw;
+  margin-bottom: 1vw;
   outline: none;
 }
 
@@ -299,15 +308,41 @@ input:focus {
   border-radius: 0;
 }
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active  {
+.input:-webkit-autofill,
+.input:-webkit-autofill:hover, 
+.input:-webkit-autofill:focus, 
+.input:-webkit-autofill:active  {
   color : #2A2A2C !important;
   -webkit-text-fill-color: #2A2A2C !important;
   -webkit-box-shadow: 0 0 0 1000px #EDEFEE inset !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
+}
+
+textarea {
+  resize: none;
+  height: 6.6vw;
+  padding-top: 0.4vw;
+  padding-right: 0.6vw;
+  padding-bottom: 0.4vw;
+}
+
+textarea:focus {
+  border: 0.05vw solid #2A2A2C;
+  border-radius: 0;
+}
+
+textArea::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+textArea::-webkit-scrollbar-thumb {
+  background-color: darkgray;
+  border-radius: 5px;
+}
+
+textArea::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
 }
 
 .submit-btn {
@@ -333,7 +368,7 @@ input:-webkit-autofill:active  {
   font-size: 12px;
 }
 
-/* TEST DROPDOWN */
+/* dropdown */
 .dropdown {
   position: relative;
 }
@@ -347,9 +382,15 @@ input:-webkit-autofill:active  {
   border: none;
   font-family: 'Mulish', sans-serif;
   font-size: 1.1vw;
-  margin-bottom: 1.2vw;
+  margin-bottom: 1vw;
   outline: none;
   text-align: left;
+}
+
+.dropdown-btn:focus {
+  box-sizing: border-box;
+  border: 0.05vw solid #2A2A2C;
+  border-radius: 0;
 }
 
 .menu {
@@ -360,14 +401,15 @@ input:-webkit-autofill:active  {
 
   margin-top: -1vw;
 
-  width: 83.2%;
+  width: 99.3%;
 }
 
 .menu > li {
-  margin: -1px;
-  padding-left: 0.7vw;
+  margin: -0.1vw;
+  padding-left: 0.35vw;
   background-color: #EDEFEE;
   color: #2A2A2C;
+  font-size: 1.1vw;
 }
 
 .menu > li:hover {
@@ -382,12 +424,20 @@ input:-webkit-autofill:active  {
   background: none;
   color: inherit;
   border: none;
-  padding: 5px;
+  padding: 0.4vw;
   margin: 0;
   font: inherit;
   cursor: pointer;
 }
-/* TEST DROPDOWN */
+
+.arrow {
+  fill: #2A2A2C;
+  position: absolute;
+  top: 0.3vw;
+  right: 0.3vw;
+  width: 1.8vw;
+}
+/* dropdown */
 
 @keyframes p-load {
   0% {

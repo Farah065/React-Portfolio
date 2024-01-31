@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import {ReactComponent as ArrowDown} from './SVGs/ArrowDown.svg';
+import {ReactComponent as ArrowUp} from './SVGs/ArrowUp.svg';
 
 function Dropdown(props) {
     const [open, setOpen] = useState(false);
@@ -38,9 +40,10 @@ function Dropdown(props) {
 
 
     return (
-    <div>
+    <div className='dropdown'>
+        {!open && <ArrowDown className='arrow' onClick={handleOpen} />}
+        {open && <ArrowUp className='arrow' onClick={handleOpen} />}
         <button className='dropdown-btn' onClick={handleOpen} style={{color: props.value==="Select one..." ? '#757575' :'#2A2A2C'}}>{props.value}</button>
-        
         {open ? (
             <ul className="menu">
                 <li className="menu-item">

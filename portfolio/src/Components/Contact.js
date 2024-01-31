@@ -44,13 +44,13 @@ function Contact() {
                     <div className='form-contents'>
                         <form>
                             <label>Name</label>
-                            <input placeholder='Type here...' value={name} onChange={nameChange} required size={50} />
+                            <input className='input' placeholder='Type here...' value={name} onChange={nameChange} required size={50} />
                             <label>Email</label>
-                            <input placeholder='Type here...' value={email} onChange={emailChange} type='email' required />
-                            <label>Type of Enquiry</label>
+                            <input className='input' placeholder='Type here...' value={email} onChange={emailChange} type='email' required />
+                            <label>Type of enquiry</label>
                             <Dropdown value={enq} handler={enqChange}/>
                             <label>Message</label>
-                            <input placeholder='Type here...' value={msg} onChange={msgChange} required />
+                            <textarea className='input' placeholder='Type here...' value={msg} onChange={msgChange} required />
                         </form>
                         <button className='submit-btn' disabled={!name || !email || enq === "Select one..." || !msg} type="submit" onClick={handleSubmit}>
                             Submit
