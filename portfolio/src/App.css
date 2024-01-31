@@ -115,14 +115,17 @@ h2, p {
 
 .navbar-container {
   position: fixed;
+  top: 0px;
   z-index: 2;
   width: 100%;
-  background: linear-gradient(to right, #2A2A2C 0%, #2A2A2C 70%, #708188 70%, #708188 100%)
+  background: linear-gradient(to right, #2A2A2C 0%, #2A2A2C 70%, #708188 70%, #708188 100%);
+  transition: ease-out 300ms;
 }
 
-/* .nav-hidden {
-  background-color: black;
-} */
+.nav-hidden {
+  top: -80px;
+  transition: ease-out 500ms;
+}
 
 .nav-item {
   font-family: 'Mulish', sans-serif;

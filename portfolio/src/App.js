@@ -1,5 +1,5 @@
 import './App.css';
-//import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-scroll';
 import {ReactComponent as LinkedinSVG} from './Components/SVGs/Linkedin.svg';
 import {ReactComponent as GithubSVG} from './Components/SVGs/Github.svg';
@@ -10,29 +10,30 @@ import Contact from './Components/Contact';
 
 function App() {
 
-  // useEffect(() => {
-  //   const nav = document.querySelector(".navbar");
-  //   let lastScrollY = window.scrollY;
+  useEffect(() => {
+    const nav = document.querySelector(".navbar-container");
+    let lastScrollY = window.scrollY;
 
-  //   const handleScroll = () => {
-  //     if (lastScrollY < window.scrollY) {
-  //       nav.classList.add("nav-hidden");
-  //       console.log('hide');
-  //     } else {
-  //       nav.classList.remove("nav-hidden");
-  //       console.log('unhide');
-  //     }
+    const handleScroll = () => {
+      if (lastScrollY < window.scrollY) {
+        nav.classList.add("nav-hidden");
+        console.log('hide');
+        console.log(window.scrollY);
+      } else {
+        nav.classList.remove("nav-hidden");
+        console.log('unhide');
+      }
 
-  //     lastScrollY = window.scrollY;
-  //   };
+      lastScrollY = window.scrollY;
+    };
 
-  //   window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-  //   // Cleanup the event listener when the component is unmounted
-  //   return () => {
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  //   }, []);
+    // Cleanup the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+    }, []);
 
   return (
     <div className='app'>
