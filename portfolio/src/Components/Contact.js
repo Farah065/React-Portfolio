@@ -7,17 +7,36 @@ function Contact() {
     const [enq, setEnq] = useState("Select one...");
     const [msg, setMsg] = useState("");
 
+    const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+
+    const [nameEmpty, setNameEmpty] = useState(false);
+    const [emailEmpty, setEmailEmpty] = useState(false);
+    const [emailInvalid, setEmailInvalid] = useState(false);
+    const [enqEmpty, setEnqEmpty] = useState(false);
+    const [msgEmpty, setMsgEmpty] = useState(false);
+
     const nameChange = (e) => {
         setName(e.target.value);
+        var nameInput = document.querySelector(".name");
+        nameInput.classList.remove("invalid");
+        setNameEmpty(false);
     }
     const emailChange = (e) => {
         setEmail(e.target.value);
+        var emailInput = document.querySelector(".email");
+        emailInput.classList.remove("invalid");
+        setEmailEmpty(false);
+        setEmailInvalid(false);
     }
     const enqChange = (s) => {
         setEnq(s);
+        setEnqEmpty(false);
     }
     const msgChange = (e) => {
         setMsg(e.target.value);
+        var msgInput = document.querySelector(".msg");
+        msgInput.classList.remove("invalid");
+        setMsgEmpty(false);
     }
 
     const handleSubmit = (e) => {
@@ -27,6 +46,34 @@ function Contact() {
         setEnq("Select one...");
         setMsg("");
 	}
+
+    const unfocusName = () => {
+        var nameInput = document.querySelector(".name");
+        if (!name) {
+            nameInput.classList.add("invalid");
+            setNameEmpty(true);
+        }
+    }
+
+    const unfocusEmail = () => {
+        var emailInput = document.querySelector(".email");
+        if (!email) {
+            emailInput.classList.add("invalid");
+            setEmailEmpty(true);
+        }
+        else if(!email.match(isValidEmail)){
+            emailInput.classList.add("invalid");
+            setEmailInvalid(true);
+        }
+    }
+
+    const unfocusMsg = () => {
+        var msgInput = document.querySelector(".msg");
+        if (!msg) {
+            msgInput.classList.add("invalid");
+            setMsgEmpty(true);
+        }
+    }
 
     return (
         <div id='contact'>
@@ -43,16 +90,21 @@ function Contact() {
                 <div className='form-container'>
                     <div className='form-contents'>
                         <form>
-                            <label>Name</label>
-                            <input className='input' placeholder='Type here...' value={name} onChange={nameChange} required size={50} />
-                            <label>Email</label>
-                            <input className='input' placeholder='Type here...' value={email} onChange={emailChange} type='email' required />
-                            <label>Type of enquiry</label>
-                            <Dropdown value={enq} handler={enqChange}/>
-                            <label>Message</label>
-                            <textarea className='input' placeholder='Type here...' value={msg} onChange={msgChange} required />
+                            <label className='required'>Name</label>
+                            <input className='input name' placeholder='Type here...' value={name} onChange={nameChange} onBlur={unfocusName} required maxLength={50} />
+                            {nameEmpty && <p>This field is required</p>}
+                            <label className='required'>Email</label>
+                            <input className='input email' placeholder='Type here...' value={email} onChange={emailChange} onBlur={unfocusEmail} type='email' required />
+                            {emailEmpty && <p>This field is required</p>}
+                            {emailInvalid && <p>Invalid email</p>}
+                            <label className='required'>Type of enquiry</label>
+                            <Dropdown enqEmpty={enqEmpty} setEnqEmpty={setEnqEmpty} value={enq} handler={enqChange}/>
+                            {enqEmpty && <p>This field is required</p>}
+                            <label className='required'>Message</label>
+                            <textarea className='input msg' placeholder='Type here...' value={msg} onChange={msgChange} onBlur={unfocusMsg} required />
+                            {msgEmpty && <p>This field is required</p>}
                         </form>
-                        <button className='submit-btn' disabled={!name || !email || enq === "Select one..." || !msg} type="submit" onClick={handleSubmit}>
+                        <button className='submit-btn' disabled={!name || !email || emailInvalid || enq === "Select one..." || !msg} type="submit" onClick={handleSubmit}>
                             Submit
                         </button>
                     </div>
