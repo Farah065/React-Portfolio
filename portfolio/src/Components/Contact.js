@@ -1,8 +1,14 @@
 import React, {useState} from 'react';
 import Dropdown from './Dropdown';
+import {ReactComponent as SpinnerSVG} from './SVGs/Spinner.svg';
+import Alert from './Alert';
 
 function Contact() {
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState("");
+
     const [name, setName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [enq, setEnq] = useState("Select one...");
     const [msg, setMsg] = useState("");
@@ -14,6 +20,7 @@ function Contact() {
     const [emailInvalid, setEmailInvalid] = useState(false);
     const [enqEmpty, setEnqEmpty] = useState(false);
     const [msgEmpty, setMsgEmpty] = useState(false);
+    const [msgShort, setMsgShort] = useState(false);
 
     const nameChange = (e) => {
         setName(e.target.value);
@@ -37,14 +44,33 @@ function Contact() {
         var msgInput = document.querySelector(".msg");
         msgInput.classList.remove("invalid");
         setMsgEmpty(false);
+        setMsgShort(false);
     }
 
-    const handleSubmit = (e) => {
-		e.preventDefault();
-		setName("");
-        setEmail("");
-        setEnq("Select one...");
-        setMsg("");
+    function timeout(delay) {
+        return new Promise( res => setTimeout(res, delay) );
+    }
+
+    const handleSubmit = async (e) => {
+        if (!loading) {
+            e.preventDefault();
+            setLoading(true);
+            var r = Math.random();
+            await timeout(3000);
+            setLoading(false);
+    
+            if (r < 0.5) {
+                setLastName(name);
+                setName("");
+                setEmail("");
+                setEnq("Select one...");
+                setMsg("");
+                setStatus("Success");
+            }
+            else {
+                setStatus("Failure");
+            }
+        }
 	}
 
     const unfocusName = () => {
@@ -73,6 +99,10 @@ function Contact() {
             msgInput.classList.add("invalid");
             setMsgEmpty(true);
         }
+        else if (msg.length < 25) {
+            msgInput.classList.add("invalid");
+            setMsgShort(true);
+        }
     }
 
     return (
@@ -91,26 +121,28 @@ function Contact() {
                     <div className='form-contents'>
                         <form>
                             <label className='required'>Name</label>
-                            <input className='input name' placeholder='Type here...' value={name} onChange={nameChange} onBlur={unfocusName} required maxLength={50} />
+                            <input className='input name' placeholder='Type here...' value={name} onChange={nameChange} onBlur={unfocusName} maxLength={50} />
                             {nameEmpty && <p>This field is required</p>}
                             <label className='required'>Email</label>
-                            <input className='input email' placeholder='Type here...' value={email} onChange={emailChange} onBlur={unfocusEmail} type='email' required />
+                            <input className='input email' placeholder='Type here...' value={email} onChange={emailChange} onBlur={unfocusEmail} type='email' />
                             {emailEmpty && <p>This field is required</p>}
                             {emailInvalid && <p>Invalid email</p>}
                             <label className='required'>Type of enquiry</label>
                             <Dropdown enqEmpty={enqEmpty} setEnqEmpty={setEnqEmpty} value={enq} handler={enqChange}/>
                             {enqEmpty && <p>This field is required</p>}
                             <label className='required'>Message</label>
-                            <textarea className='input msg' placeholder='Type here...' value={msg} onChange={msgChange} onBlur={unfocusMsg} required />
+                            <textarea className='input msg' placeholder='Type here...' value={msg} onChange={msgChange} onBlur={unfocusMsg} minLength={25} />
                             {msgEmpty && <p>This field is required</p>}
+                            {msgShort && <p>Message must be at least 25 characters</p>}
                         </form>
-                        <button className='submit-btn' disabled={!name || !email || emailInvalid || enq === "Select one..." || !msg} type="submit" onClick={handleSubmit}>
-                            Submit
+                        <button className='submit-btn' disabled={!name || !email || emailInvalid || enq === "Select one..." || !msg || msgShort} type="submit" onClick={handleSubmit}>
+                            {loading? <SpinnerSVG className='spinner' /> : "Submit"}
                         </button>
                     </div>
                 </div>
             </div>
             <p className='copyright'>Farah • © 2024</p>
+            {status !== "" ? <Alert status={status} setStatus={setStatus} name={lastName} /> : <></>}
         </div>
     );
 }

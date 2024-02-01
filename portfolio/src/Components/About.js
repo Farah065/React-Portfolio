@@ -9,8 +9,8 @@ function About() {
             <div className='intro-text'>
                 <h2>Hey! I'm</h2>
                 <h1>Farah</h1>
-                <p>Third year <div className='highlight'>engineering</div> student. <br />
-                    Aspiring <div className='highlight'>game developer</div>.</p>
+                <p>Third year <span className='highlight'>engineering</span> student. <br />
+                    Aspiring <span className='highlight'>game developer</span>.</p>
             </div>
         </div>
     );

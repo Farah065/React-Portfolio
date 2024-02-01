@@ -17,11 +17,8 @@ function App() {
     const handleScroll = () => {
       if (lastScrollY < window.scrollY) {
         nav.classList.add("nav-hidden");
-        console.log('hide');
-        console.log(window.scrollY);
       } else {
         nav.classList.remove("nav-hidden");
-        console.log('unhide');
       }
 
       lastScrollY = window.scrollY;

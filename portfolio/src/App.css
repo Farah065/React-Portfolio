@@ -220,6 +220,15 @@ h2, p {
   padding-top: 0.8vw;
 }
 
+.card > p {
+  color: #2A2A2C;
+  font-size: 0.9vw;
+  padding-top: 0.8vw;
+  position: absolute;
+  bottom: 0.5vw;
+  right: 0.5vw;
+}
+
 .contact-text {
   display: flex;
   flex-direction: column;
@@ -372,9 +381,15 @@ textArea::-webkit-scrollbar-track {
   background-color: #2A2A2C;
   color: #EDEFEE;
   font-size: 1.4vw;
-  width: max-content;
+  width: 7.5vw;
+  height: 3vw;
   padding: 0.5vw 1vw;
   border: none;
+  margin: 0 auto;
+}
+
+.spinner {
+  display: block;
   margin: 0 auto;
 }
 
@@ -480,6 +495,72 @@ textArea::-webkit-scrollbar-track {
   height: 1.8vw;
 }
 /* dropdown */
+
+.background-panel {
+  position: absolute;
+  top: -200vh;
+  z-index: 2;
+  width: 100%;
+  height: 300vh;
+  background-color: #2a2a2c5a;
+}
+
+.alert-container {
+  width: 35vw;
+  height: 20vw;
+  background-color: #D9D9D9;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1vw 2vw;
+}
+
+.alert-contents {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.alert-contents p {
+  color: #2A2A2C;
+  font-size: 1.3vw;
+  text-align: center;
+  padding: 0 3vw;
+}
+
+.alert-contents h1 {
+  color: #2A2A2C;
+  font-size: 3vw;
+  margin-bottom: 1vw;
+}
+
+.status {
+  width: 8vw;
+}
+
+.close {
+  width: 3vw;
+  display: block;
+  position: absolute;
+  top: -0.5vw;
+  right: -0.5vw;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1vw;
+  right: 1vw;
+  width: 2vw;
+  height: 2vw;
+  border: none;
+  background-color: transparent;
+  z-index: 3;
+}
 
 @keyframes p-load {
   0% {
